@@ -1,0 +1,22 @@
+{
+  "name": "jsnote",
+  "version": "1.0.0",
+  "description": "1.实现一个sum能构使用如下调用方式 sum(1,2,3)(1)(1).sumof() ====》 8\r - [实现](./curry.sum.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OnlyALittle/jsNote.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OnlyALittle/jsNote/issues"
+  },
+  "homepage": "https://github.com/OnlyALittle/jsNote#readme",
+  "devDependencies": {
+    "promises-aplus-tests": "^2.1.2"
+  }
+}
