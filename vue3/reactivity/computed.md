@@ -13,7 +13,7 @@
 ```tsx
     this.effect = effect(getter, {
       lazy: true,
-		//+ getter内部收集的track发生变化时触发scheduler，触发computed的trigger，
+		//+ getter内部收集的track发生变化时触发scheduler，scheduler触发computed的trigger，
 		//+ 这就意味着此时收集了computedRef的副作用的函数会重新执行（使用了computed.value的）
 		//+ 而在这个副作用函数中一定会对computedRef产生get访问，
 		//+ 此时又回到get函数内部发现drity为需要求值，就执行runner进行真实的求值。
@@ -33,3 +33,9 @@
       }
     })
 ```
+
+-----
+
+## 简单流程
+
+![流程](./resource/jpg/computed.jpg)

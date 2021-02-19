@@ -79,3 +79,9 @@ function createSetter(shallow = false) {
 ### forEach 方法
 #### 在调用 froEach 方法的时候会触发 ITERATE 类型的 track，需要注意 Size 方法也会同样类型的 track，毕竟集合整体的变化会导致整个两个方法的输出不一样。
 #### 顺带提一句，还记得我们的 effect 时候的 trigger 吗，对于 SET | ADD | DELETE 等类似的操作，因为会导致集合值得变化，所以也会触发 ITERATE_KEY 或则 MAP_KEY_ITERATE_KEY 的 effect 重新收集依赖。
+
+-----
+
+## 简单流程
+
+![流程](./resource/jpg/handlers.png)

@@ -107,4 +107,5 @@ export function toRaw<T>(observed: T): T {
 
 ## 简单流程
 
-![流程](./reactive.png)
+![流程](./resource/jpg/reactive.png)
+![流程](./resource/jpg/vue3-reactive-get.jpg)
