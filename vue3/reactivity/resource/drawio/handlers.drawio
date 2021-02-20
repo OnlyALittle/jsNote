@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-02-19T07:43:34.272Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="pBaKl1QlMUohDcWI06KV" version="13.10.0" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-20T08:44:22.981Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="UdbG9tEepjRtoh7TJNdx" version="13.10.0" type="embed">
     <diagram id="I1sEE97VDQTC6iK8TLRU" name="第 1 页">
-        <mxGraphModel dx="2783" dy="33" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#F1FAEE" math="0" shadow="0">
+        <mxGraphModel dx="2350" dy="-719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#F1FAEE" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -93,7 +93,7 @@
                 <mxCell id="73" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;labelBackgroundColor=#F1FAEE;" parent="1" source="74" target="68" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="74" value="&lt;div style=&quot;line-height: 18px&quot;&gt;是不是已经创建过了&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;labelBackgroundColor=none;" parent="1" vertex="1">
+                <mxCell id="74" value="&lt;div style=&quot;line-height: 18px&quot;&gt;ReactiveFlags.RAW&lt;/div&gt;&lt;div style=&quot;line-height: 18px&quot;&gt;且已经创建过了&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;labelBackgroundColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-750" y="1340" width="200" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="75" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;exitX=1;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=#F1FAEE;" parent="1" source="133" target="78" edge="1">
@@ -113,7 +113,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="77" value="&lt;div style=&quot;line-height: 18px&quot;&gt;调用的数组的迭代器api&lt;/div&gt;&lt;div style=&quot;line-height: 18px&quot;&gt;(push、pop、shift、unshift、splice）&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;labelBackgroundColor=none;" parent="1" vertex="1">
+                <mxCell id="77" value="&lt;div style=&quot;line-height: 18px&quot;&gt;调用的数组的迭代器api，在执行的时候&lt;/div&gt;&lt;div style=&quot;line-height: 18px&quot;&gt;(push、pop、shift、unshift、splice）&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;labelBackgroundColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-750" y="1440" width="260" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="78" value="触发依赖收集" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;strokeColor=#457B9D;fillColor=#A8DADC;fontColor=#1D3557;" parent="1" vertex="1">

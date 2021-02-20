@@ -17,7 +17,8 @@ class RefImpl<T> {
 
   constructor(private _rawValue: T, public readonly _shallow = false) {
     //+ 把对象直接处理成reactive
-    //+ _shallow模式下，传入的一定是vue，但是refImpl只会监听对象的value，所以其他值不会响应式
+    //+ _shallow模式下，传入的一定是obj，但是refImpl只会监听对象的value，所以其他值不会响应式
+    //+ shallowRef创建一个跟踪自己的 .value 更改的ref
     this._value = _shallow ? _rawValue : convert(_rawValue)
   }
 
@@ -43,7 +44,7 @@ class RefImpl<T> {
 ```
 
 ## shallowRef
-### _shallow模式下，传入的是对象，但是refImpl只会监听对象的value，所以其他值不会响应式，RefImpl的constructor
+### _shallow模式下，传入的是对象，但是refImpl只会监听对象的value，所以其他值不会响应式，见RefImpl的constructor
 
 
 ## toRefs

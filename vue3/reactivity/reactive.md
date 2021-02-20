@@ -6,13 +6,13 @@
 
 ```typescript
 // 对象类型分类用于区别处理数据的方式
+// 对于 target 类型的判断，在 createReactiveObject 中对于 COMMON 和 COLLECTION 有不同的 handlers 来处理。
 const enum TargetType {
   INVALID = 0,
   COMMON = 1,
   COLLECTION = 2
 }
 // ReactiveFlags 是 proxy 上的一些常量的定义。
-// 对于 target 类型的判断，在 createReactiveObject 中对于 COMMON 和 COLLECTION 有不同的 handlers 来处理。
 export const enum ReactiveFlags {
   SKIP = '__v_skip', //+ 跳过reactive
   IS_REACTIVE = '__v_isReactive', //+ 是否是reactive对象
@@ -38,13 +38,13 @@ export interface Target {
 
 ### 直接看reactive方法
 #### 首先判断入参，判断传入的target是不是带有readonly(`ReactiveFlags.IS_READONLY`)的key
-#### 需要注意的是vue不会给对象附上这个值，而是在get中进行拦截
+#### 需要注意的是vue不会给对象附上这个值，只是在get中进行拦截，拦截到这个key就返回结果
 ```ts
 target && (target as Target)[ReactiveFlags.IS_READONLY]
 ```
 #### 创建reactive
 - createReactiveObject方法
-- 入参：target（值），isReadonly（是否只读），baseHandlers， collectionHandlers后面两个参数是proxy的具柄
+- 入参：target（值），isReadonly（是否只读），baseHandlers， collectionHandlers后面两个参数是proxy的handler
 - `TargetType.COMMON` 使用baseHandlers具柄；Object，Array 
 - `TargetType.COLLECTION` 使用collectionHandlers具柄；Map，Set，WeakMap，WeakSet 
 - `TargetType.INVALID` 直接返回
@@ -79,14 +79,15 @@ function createReactiveObject(
 
 #### isReadonly判断是否是只读
 - 核心是判断`ReactiveFlags.IS_READONLY`	的值
-- 会被get handler拦截，拦截之后直接返回了true，具体原因间baseHandlers
+- 会被get handler拦截，拦截之后直接返回了true，具体见baseHandlers
 
 #### isReactive判断是否为reactive对象
 - 核心是判断`ReactiveFlags.IS_REACTIVE`	的值
 - 如果是只读则判断他的`ReactiveFlags.RAW`是不是isReactive
-- 也会被get handler拦截
+- 也是被get handler拦截
 
 #### isProxy判断是否被proxy处理过，上面两个api的集合
+- isReadonly || isReactive
 
 #### toRaw取出源对象，递归实现
 - 核心是取`ReactiveFlags.RAW`	的值
@@ -102,10 +103,10 @@ export function toRaw<T>(observed: T): T {
 ```
 #### markRaw 标记不被reactive
 - 给对象的`ReactiveFlags.SKIP`赋值为true
-- 
+
+
 -----
 
 ## 简单流程
 
 ![流程](./resource/jpg/reactive.png)
-![流程](./resource/jpg/vue3-reactive-get.jpg)
