@@ -52,6 +52,11 @@ function createSetter(shallow = false) {
 
     // 2、key不存在 触发TriggerOpTypes.ADD收集
 
+    // 注意这个判断逻辑
+    // if (target === toRaw(receiver)) {
+    //   
+    // }
+
     // 3、修改时，需要排除未改变的情况（出现场景举例）
     // 数组增加元素时，会触发length改变，但在达到length修改的set时
     // 数组已经添加元素成功，取到的oldValue会与value相等，直接过滤掉此次不必要的trigger
@@ -60,6 +65,38 @@ function createSetter(shallow = false) {
 
 ```
 
+#### target === toRaw(receiver) 判断逻辑的目的
+- 排除当前修改的target是original的原型链上的东西，这时候就要防止重复触发
+```ts
+
+ const child = new Proxy(
+   {},
+   { // 其他 traps 省略
+     set(target, key, value, receiver) {
+       Reflect.set(target, key, value, receiver)
+       console.log('child', receiver)
+       return true
+     }
+   }
+)
+
+const parent = new Proxy(
+  { a: 10 },
+  { // 其他 traps 省略
+    set(target, key, value, receiver) {
+      Reflect.set(target, key, value, receiver)
+      console.log('parent', receiver)
+      return true
+    }
+  }
+)
+Object.setPrototypeOf(child, parent)
+child.a = 4
+//console
+// parent
+// child
+
+```
 ## collectionHandlers
 
 ### collection 类型的proxy只监听get和api对应的部分不代理set，因为Set, Map, WeakMap, WeakSet这几个类型正常操作都是通过它内置的api来实现的
