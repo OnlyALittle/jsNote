@@ -1,10 +1,12 @@
 # Event Loop
 
+## 同步任务队列
+
 ## 宏队列
 - setTimeout
 - setInterval
 - setImmediate (Node独有)
-- I/O
+- I/O Callback
 - requestAnimationFrame (浏览器独有)
 - UI rendering (浏览器独有)
 
@@ -50,9 +52,10 @@ console.log(7);
 ## NodeJS
 
 ### NodeJS中宏队列主要有4个
-### 这4个都属于宏队列，在NodeJS中，不同的macrotask会被放置在不同的宏队列中。
+### 这5个都属于宏队列，在NodeJS中，不同的macrotask会被放置在不同的宏队列中。
 - Timers Queue（Ex：setTimeout）
-- IO Callbacks Queue（Ex：I/O callback）
+- pending Callbacks Queue（Ex：TCP）
+- Poll Queue（Ex：I/O Callback）
 - Check Queue（Ex：setImmediate）
 - Close Callbacks Queue（Ex：scoket close）
 
@@ -60,7 +63,7 @@ console.log(7);
 ### 在NodeJS中，不同的任务会被放置在不同的任务队列中。
 - Next Tick Queue：是放置process.nextTick(callback)的回调任务的
 - Other Micro Queue：放置其他microtask，比如Promise等
-- NodeJS可以理解成有4个宏任务队列和2个微任务队列，但是执行宏任务时有6个阶段。
+- NodeJS可以理解成有5个宏任务队列和2个微任务队列，但是执行宏任务时有6个阶段。
 - 先执行全局Script代码，执行完同步代码调用栈清空后，
 - 宏任务按顺序执行
 - 每个宏任务执行完成之后就去执行微任务，和浏览器相同；
@@ -93,6 +96,33 @@ fs.readFile('test.js', () => {
     // 什么也不做
   }
 });
+
+
+// 题目2
+
+fs.readFile('test.js', () => {
+  setTimeout(() => {
+    console.log('fs readFile settimeout');
+  }, 0);
+  setImmediate(() => {
+    console.log('fs readFile setImmediate');
+  });
+});
+setTimeout(() => {
+    console.log('settimeout');
+}, 0);
+setImmediate(() => {
+  console.log('setImmediate');
+});
+process.nextTick(() => {
+  console.log('nextTick');
+})
+
+// nextTick
+// settimeout
+// setImmediate
+// fs readFile setImmediate
+// fs readFile settimeout
 
 ```
 #### 分析
@@ -141,3 +171,6 @@ setTimeout(function() {
 // Node 10  	1 7 6 8 2 4 9 11 3 10 5 12
 // Node 10 之后 1 7 6 8 2 4 3 5 9 11 10 12
 ```
+
+
+

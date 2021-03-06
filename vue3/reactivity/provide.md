@@ -8,11 +8,18 @@
 #### provides继承父组件的代码：
 ```ts
 // runtime-core/component.ts
-const instance: ComponentInternalInstance = {
-  // ...,
-  provides: parent ? parent.provides : Object.create(appContext.provides),
-  // ...,
-};
+export function createComponentInstance(
+  vnode: VNode,
+  parent: ComponentInternalInstance | null,
+  suspense: SuspenseBoundary | null
+) {
+    // 。。。。。
+  const instance: ComponentInternalInstance = {
+    // ...,
+    provides: parent ? parent.provides : Object.create(appContext.provides),
+    // ...,
+  };
+}
 ```
 
 ## inject

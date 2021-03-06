@@ -1,34 +1,48 @@
-function myCallAndAplly(ctx, ...args) {
-	let realArgs;
-	if (!ctx) {
-		ctx = window;
-	}
-	if (args && Array.isArray(args[0])) {
-		realArgs = args[0];
-	} else {
-		realArgs = args;
-	}
+Function.prototype.myCall = myCall;
+Function.prototype.myBind = myBind;
 
-	// 此时的this为function，
-	// 把this挂在content下就可以把这个方法的this指向content了
+function myBind(obj, ...rest) { 
+	if (typeof this !== 'function') {
+		throw new TypeError('Error')
+	}
+	let self = this;
+	return function Func(...params) {
+		if (this instanceof Func) {
+			// new 的情况
+			return new self(...rest, ...params);
+		}
+		return self.myCall(obj, ...rest, ...params);
+	}
+}
+
+function myCall(obj, ...rest) {
+	// 参数选择
+	let parmas = [];
+	if (rest[0] instanceof Array) {
+		parmas = rest[0];
+	} else {
+		parmas = rest;
+	}
+	let ctx = obj;
+
+	if (!obj)
+		ctx = window;
+
 	ctx.__fn = this;
-	const res = ctx.__fn(...realArgs);
+	let res = ctx.__fn(...parmas);
 	delete ctx.__fn;
 	return res;
 }
 
-function myBind(content, ...args) {
-	if (typeof this !== 'function') throw 'need function';
-	const self = this;
-	return (...rest) => this.myCallAndAplly(content, ...args, ...rest);
-	// return (...rest) => this.myCallAndAplly(content, ...args, ...rest);
+
+function a(...params) {
+	console.log(this.a, params)
 }
 
-Function.prototype.myCallAndAplly = myCallAndAplly;
-Function.prototype.myBind = myBind;
-
-function a() {}
-
-a.myCallAndAplly({
+a.apply2({
+	a:1
+}, 2, 3);
+let nOne = a.myBind({
 	a:1
 }, [2, 3]);
+nOne()
