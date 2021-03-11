@@ -51,6 +51,8 @@ function setTimeoutTryCatch(callback, reject){
     });
 }
 
+// new Promise((resolve, reject) => {})
+
 class PromiseClass {
     state = 'pending'; 
     value = undefined;
@@ -81,7 +83,7 @@ class PromiseClass {
     then(fulCallback, errCallback) {
         fulCallback = typeof fulCallback === 'function' ? fulCallback : value => value;
         errCallback = typeof errCallback === 'function' ? errCallback : err => { throw err };
-        let nextPromise = new PromiseClass((resolve, reject)=>{
+        let nextPromise = new PromiseClass((resolve, reject) => {
             if (this.state === 'resolve') {
                 setTimeoutTryCatch(() => {
                     let res = fulCallback(this.value);
@@ -151,7 +153,7 @@ class PromiseClass {
             }, reject);
           };
         });
-      }
+    }
      
 }
 
@@ -179,3 +181,4 @@ res.then(res => {
 }).catch(res => {
     console.log('catch:', res)
 })
+

@@ -200,5 +200,5 @@ Reflect.get(obj, "foo", wrapper);
 Object.defineProperty(obj, name, desc);
 // 失败时返回false
 Reflect.defineProperty(obj, name, desc);
-上面代码中，Reflect.defineProperty方法的作用与Object.defineProperty是一样的，都是为对象定义一个属性。但是，Reflect.defineProperty方法失败时，不会抛出错误，只会返回false。
 ```
+- 上面代码中，Reflect.defineProperty方法的作用与Object.defineProperty是一样的，都是为对象定义一个属性。但是，Reflect.defineProperty方法失败时，不会抛出错误，只会返回false。

@@ -68,9 +68,9 @@ obj.getName() // (个_个)
 
 function a() {
     this.name = 1;
-    obj.getName() // 1
+    obj.getName()
 }
-a()
+a() // 1
 
 ```
 ## 如何判断this

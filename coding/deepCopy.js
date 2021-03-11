@@ -2,7 +2,6 @@ const isType = (type) => (val) => Object.prototype.toString.call(val) === `[obje
 const isObject = (val) => isType('Object')(val);
 
 function cloneDeep(target) {
-
 	if (isObject(target)) {
 		var obj = {};
 		Object.keys(target).forEach(function(key) {
@@ -10,11 +9,9 @@ function cloneDeep(target) {
 		});
 		return obj;
 	} else if (Array.isArray(target)) {
-		var arr = [];
-		for (var i = 0; i < target.length; i++) {
-			arr[i] = cloneDeep(target[i]);
-		}
-
+		var arr = target.map(item => {
+			return cloneDeep(item);
+		})
 		return arr;
 	}
 	return target;
@@ -27,4 +24,6 @@ let a = {
 	bb: [1,{a:1}]
 }
 let b = cloneDeep(a)
+console.log(a, b)
+b.bb[1].a = 11;
 console.log(a, b)

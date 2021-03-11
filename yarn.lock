@@ -811,6 +811,16 @@ uri-js@^4.2.2:
     safe-buffer "^5.1.2"
     which-typed-array "^1.1.2"
 
+vue-router@^4.0.4:
+  version "4.0.4"
+  resolved "http://registry.npm.souche-inc.com/vue-router/download/vue-router-4.0.4.tgz#ad9b4b7bbdad622407b4ff189b1646f48c1e9053"
+  integrity sha1-rZtLe72tYiQHtP8YmxZG9IwekFM=
+
+vuex@^4.0.0:
+  version "4.0.0"
+  resolved "http://registry.npm.souche-inc.com/vuex/download/vuex-4.0.0.tgz#ac877aa76a9c45368c979471e461b520d38e6cf5"
+  integrity sha1-rId6p2qcRTaMl5Rx5GG1INOObPU=
+
 watchpack@^2.0.0:
   version "2.1.1"
   resolved "http://registry.npm.souche-inc.com/watchpack/download/watchpack-2.1.1.tgz#e99630550fca07df9f90a06056987baa40a689c7"

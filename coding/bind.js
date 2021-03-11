@@ -16,6 +16,9 @@ function myBind(obj, ...rest) {
 }
 
 function myCall(obj, ...rest) {
+	let ctx = obj;
+
+	if (!obj) ctx = window;
 	// 参数选择
 	let parmas = [];
 	if (rest[0] instanceof Array) {
@@ -23,10 +26,6 @@ function myCall(obj, ...rest) {
 	} else {
 		parmas = rest;
 	}
-	let ctx = obj;
-
-	if (!obj)
-		ctx = window;
 
 	ctx.__fn = this;
 	let res = ctx.__fn(...parmas);
@@ -39,7 +38,7 @@ function a(...params) {
 	console.log(this.a, params)
 }
 
-a.apply2({
+a.myCall({
 	a:1
 }, 2, 3);
 let nOne = a.myBind({

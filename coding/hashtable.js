@@ -171,7 +171,6 @@ class HashTable {
         var oldStorage = this.storage
         // 重置属性
         this.storage = []
-        this.count = 0
         this.limit = newlimit
 
         // 遍历

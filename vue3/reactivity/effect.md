@@ -42,7 +42,7 @@ export interface ReactiveEffectOptions {
 - effect.deps是一个数组，存储的是该effect依赖的每个属性的depsSet副作用函数表(目标所有的effect集合)
 - track阶段建立的依赖存储表中，每个响应式对象触发依赖收集的key都会对应一个副作用的Set表下文以depsSet来称呼
 - 在正式开始执行fn前，会先cleanup当前effect的deps（存储的是当前effect依赖属性的副作用depsSet表）；
-- 这样做的意义就在于现在的cleanup操作， 我们能在effect再次执行之前，从所有收集到此effect函数的depsSet中剔除该effect，以便在此次effect执行时重新收集； 这一步操作的意义在于如下场景：
+- 这样做的意义就在于, 我们能在effect再次执行之前，从所有收集到此effect函数的depsSet中剔除该effect，以便在此次effect执行时重新收集； 这一步操作的意义在于如下场景：
 
 ```HTML
 <template>
@@ -69,9 +69,12 @@ export default {
 </script>
 
 ```
-#### 我们知道模板的执行是一个副作用渲染函数，首次渲染会将当前组件的副作用渲染函数收集到showFalg, num1对应的depsSet中， 我们改变showFalg，触发渲染函数重新执行，此时如果我们不进行cleanup，num1, num2, showFalg都会收集到副作用渲染函数， 而num1是并未显示在页面，我们更改它的时候并不需要触发渲染函数的重新渲染。只有在重新执行副作用渲染函数之前进行cleanup操作， 才能确保每次渲染函数执行后依赖收集的正确性
-
-
+- 解释：
+  - 我们知道模板的执行是一个副作用渲染函数，首次渲染会将当前组件的副作用渲染函数收集到showFalg, 
+  - num1对应的depsSet中（effect）， 我们改变showFalg为false，触发渲染函数重新执行，
+  - 此时如果我们不进行cleanup，num1, num2, showFalg都会收集到副作用渲染函数， 因为第一次执行时收集到了num1
+  - 而现在num1是并未显示在页面，我们更改它的时候并不需要触发渲染函数的重新渲染。
+  - 只有在重新执行副作用渲染函数之前进行cleanup操作， 才能确保每次渲染函数执行后依赖收集的正确性
 ## track
 ### track的目标很简单，建立当前key与当前激活effect的依赖关系，源码中使用了一个较为复杂的方式来保存这种依赖关系， 见targetMap，完整的存储了对象、键值和副作用的关系，并且通过Set来对effect去重。
 
@@ -80,9 +83,7 @@ export default {
 ### trigger函数的逻辑还是比较清晰的，主要有如下步骤：
 
 > 依据不同情况取出副作用函数列表
-> 
 > 过滤当前激活副作用函数，添加其他副作用函数
-> 
 > 遍历运行所有被添加副作用函数
 
 #### 伪代码
@@ -96,7 +97,7 @@ export function trigger(
   oldValue?: unknown,
   oldTarget?: Map<unknown, unknown> | Set<unknown>
 ) {
-  // 原则是有才添加
+  // 原则是，存在才添加
   // 0、从targetMap中取这个target的依赖
 
   // 1、处理 TriggerOpTypes.CLEAR 类型的trigger

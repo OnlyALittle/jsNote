@@ -1,15 +1,12 @@
-function sum(...args) {
-	let sumNum = 0;
-	for(let i = 0; i < args.length; i++) {
-		sumNum += args[i];
+function sum(...rest) {
+	let result = 0;
+	rest.forEach(item => result += item);
+	retFunc.sumof = () => result;
+	function retFunc(...params) {
+		params.forEach(item => result += item);
+		return retFunc;
 	}
-	function getSum(...parms) {
-		for(let i = 0; i < parms.length; i++) {
-			sumNum += parms[i];
-		}
-		return getSum;
-	}
-	getSum.sumof = () => sumNum;
-	return getSum.bind(this);
+	return retFunc
 }
+
 console.log(sum(1,2,3)(1)(1).sumof());
