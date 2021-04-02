@@ -1,5 +1,5 @@
 let entrys = {
-	'index.js': function(module, require) {
+	'index.js': function(module, exports, require) {
 		var module1 = require("./module1");
 		var module2 = require("./module2");
 
@@ -15,7 +15,7 @@ let entrys = {
 }
 
 //require
-(function(modules, entry){
+(function(modules, entry) {
 	var installedModules = {};
 	function require(moduleName) {
 		if (installedModules[moduleName]) {
@@ -28,21 +28,10 @@ let entrys = {
 			loaded: false
 		}
 
-		modules[moduleName].call(module.exports, require);
+		modules[moduleName].call(module.exports, module, module.exports, require);
 		module.loaded = true;
 		return module.exports;
 	}
 	return require(entry)
 })(entrys, entry)
-
-
-
-
-
-
-
-
-
-
-
-
+ 
