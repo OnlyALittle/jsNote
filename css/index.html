@@ -1,0 +1,35 @@
+<html>
+<head>
+	<link rel="stylesheet" href="./aa.css" />
+<style>
+	.ellipsis {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		max-width: 100px;
+	}
+	.ellipsis-line {
+		overflow : hidden;
+		border:1px solid #ccc;
+    	padding:0 10px;
+		line-height:30px;
+		height:60px;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+</style>
+
+</head>
+
+<div class="ellipsis">这行文字要溢出了哦</div>
+<div class="ellipsis-line" style="width: 300px;">
+	这几行文字要溢出了哦这几行文字要溢出了哦这几行文字要溢出了哦这几行文字要溢出了哦
+	这几行文字要溢出了哦这几行文字要溢出了哦这几行文字要溢出了哦这几行文字要溢出了哦1
+</div>
+
+
+
+<script src="../coding/bind.js" crossorigin></script>
+</html>
