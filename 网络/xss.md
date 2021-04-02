@@ -22,7 +22,6 @@
 
 ### DOM型XSS
 #### 直接通过HTTP劫持，修改对应的HTML文件来实现恶意代码的注入。
--
 
 ### CSP
 - 通过在HTTP头部添加Content-Security-Policy的字段来实现的。
