@@ -56,4 +56,4 @@ source: WatchSource<T> | (WatchSource<T> | object)[] | object
 
 ## 简单流程
 
-![流程](./resource/jpg/watch.jpg)
+![流程](../resource/jpg/watch.jpg)

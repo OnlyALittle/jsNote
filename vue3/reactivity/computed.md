@@ -38,4 +38,4 @@
 
 ## 简单流程
 
-![流程](./resource/jpg/computed.jpg)
+![流程](../resource/jpg/computed.jpg)

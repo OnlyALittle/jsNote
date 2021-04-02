@@ -117,5 +117,5 @@ export function trigger(
 
 ## 简单流程
 
-![流程](./resource/jpg/effect.png)
-![流程](./resource/jpg/reactivity.jpg)
+![流程](../resource/jpg/effect.png)
+![流程](../resource/jpg/reactivity.jpg)

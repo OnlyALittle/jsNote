@@ -123,5 +123,5 @@ child.a = 4
 
 ## 简单流程
 
-![流程](./resource/jpg/handlers.png)
-![流程](./resource/jpg/vue3-reactive-get.jpg)
+![流程](../resource/jpg/handlers.png)
+![流程](../resource/jpg/vue3-reactive-get.jpg)
