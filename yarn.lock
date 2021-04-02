@@ -550,6 +550,11 @@ mime-types@^2.1.27:
   dependencies:
     mime-db "1.46.0"
 
+mime@^2.5.2:
+  version "2.5.2"
+  resolved "http://registry.npm.souche-inc.com/mime/download/mime-2.5.2.tgz#6e3dc6cc2b9510643830e5f19d5cb753da5eeabe"
+  integrity sha1-bj3GzCuVEGQ4MOXxnVy3U9pe6r4=
+
 minimatch@0.3:
   version "0.3.0"
   resolved "https://registry.npm.taobao.org/minimatch/download/minimatch-0.3.0.tgz#275d8edaac4f1bb3326472089e7949c8394699dd"
