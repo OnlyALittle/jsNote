@@ -56,11 +56,7 @@ class Compiler {
 		// 并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。
 		// 执行done钩子
 		this.hooks.done.call();
-
 	}
-
-
-
 }
 
 // 1.初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；
