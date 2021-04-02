@@ -130,6 +130,18 @@ const proxy = new Proxy(target, handler);
 proxy.getDate() // 1
 ```
 
+## Object.defineProperty 与Proxy
+- Object.defineProperty只能劫持对象的属性， 而Proxy是直接代理对象
+  - 由于Object.defineProperty只能劫持对象属性，需要遍历对象的每一个属性，如果属性值也是对象，就需要递归进行深度遍历。
+  - 但是Proxy直接代理对象， 不需要遍历操作
+
+- Object.defineProperty对新增属性需要手动进行Observe
+  - 因为Object.defineProperty劫持的是对象的属性，所以新增属性时，需要重新遍历对象， 对其新增属性再次使用Object.defineProperty进行劫持。也就是Vue2.x中给数组和对象新增属性时，需要使用$set才能保证新增的属性也是响应式的, $set内部也是通过调用Object.defineProperty去处理的。
+
+
+
+
+
 ## Reflect对象的方法
 Reflect对象的方法清单如下，共13个。
 

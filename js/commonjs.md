@@ -15,5 +15,12 @@
 - 对于动态来说，原始值发生变化，import加载的值也会发生变化。不论是基本数据类型还是复杂数据类型。
 - 循环加载时，ES6模块是动态引用。只要两个模块之间存在某个引用，代码就能够执行。
 
+# 总结
+- commonjs 值拷贝，es值引用
+- commonjs 运行时加载，es编译时输出接口
+- commonjs 单个值导出，es 可以多个
+- commonjs 动态语法可以写在判断里，es 静态语法只能写在顶层
+- commonjs this是window， es 是undefiend
+
 
 # [CommonJS简单实现](../coding/commonjs.js)
