@@ -2,11 +2,6 @@
 - 简单的来说浏览器从右到左进行查找的好处是为了尽早过滤掉一些无关的样式规则和元素
 - 如果从左到又，就要深层的向里递归，比较消耗性能，而现在这种情况下，可以大范围的先排除掉不匹配的
 
-# 盒模型（box-sizing）
-- content-box：width === content width
-- border-box：width === content width + padding + border
-
-
 # CSS 权重
 ### 从0开始，一个行内样式+1000，一个id选择器+100，一个属性选择器、class或者伪类+10，一个元素选择器，或者伪元素+1，通配符+0
 1. 常用选择器权重优先级：!important > id > class > tag
@@ -16,6 +11,14 @@
 5. 样式指向同一元素，权重规则生效，权重大的被应用
 6. 样式指向同一元素，权重规则生效，权重相同时，就近原则生效，后面定义的被应用
 7. 样式不指向同一元素时，权重规则失效，就近原则生效，离目标元素最近的样式被应用
+
+# 继承
+- 能 font-size font-family color
+- 不能 border padding margin background-color width height等
+
+# 盒模型（box-sizing）
+- content-box：width === content width
+- border-box：width === content width + padding + border
 
 # BFC
 ### BFC 是什么呢

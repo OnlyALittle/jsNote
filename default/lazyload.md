@@ -7,7 +7,19 @@
 > 这里的`getBoundingClientRect`需要注意下它拿到的bottom、和right；bottom指顶部到元素底部，right是左到元素右部
 
 ## Intersection Observer
-  - 弥补上一个方法中需要监听scroll的情况，`Intersection Observer`可以不用监听scroll事件，做到元素一可见便调用回调，在回调里面我们来判断元素是否可见。
+  - 弥补上一个方法中需要监听`scroll`的情况，`Intersection Observer`可以不用监听scroll事件，做到元素一可见便调用回调，在回调里面我们来判断元素是否可见。
+```ts
+var io = new IntersectionObserver(callback, option);
+// 开始观察
+io.observe(document.getElementById('example'));
+
+// 停止观察
+io.unobserve(element);
+
+// 关闭观察器
+io.disconnect();
+
+```
 
 ## 图片懒加载
 - 让我们html中需要懒加载的img标签的src设置缩略图或者不设置src，然后自定义一个属性（如data-src），值为真正的图片或者原图的地址（比如下面的）；

@@ -41,7 +41,7 @@ export interface ReactiveEffectOptions {
 ### 清除操作
 - effect.deps是一个数组，存储的是该effect依赖的每个属性的depsSet副作用函数表(目标所有的effect集合)
 - track阶段建立的依赖存储表中，每个响应式对象触发依赖收集的key都会对应一个副作用的Set表下文以depsSet来称呼
-- 在正式开始执行fn前，会先cleanup当前effect的deps（存储的是当前effect依赖属性的副作用depsSet表）；
+- 在正式开始执行fn前，会先cleanup当前effect的deps（存储的是当前effect中trigger属性，它依赖的所以副作用depsSet表）；
 - 这样做的意义就在于, 我们能在effect再次执行之前，从所有收集到此effect函数的depsSet中剔除该effect，以便在此次effect执行时重新收集； 这一步操作的意义在于如下场景：
 
 ```HTML

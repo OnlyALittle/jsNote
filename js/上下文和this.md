@@ -28,3 +28,62 @@ let a = {
 # arguments
 - 类数组对象而不是数组
 - 存在length属性
+
+## 题目
+### 提升
+	```ts
+		(function() {
+			var x = y = 1; //这个地方的提升有坑
+			// var x;
+			// y = 1;
+			// x = 1;
+		})()
+		console.log(y) // 1
+		console.log(x) // err
+	```
+- 
+### 箭头函数的this
+- 箭头函数的this指向定义时的位置
+```ts
+	let obj1 = {
+		name: 'obj1',
+		print: function() {
+			return () => console.log(this.name)
+		}
+	}
+	let obj2 ={name: 'obj2'}
+	obj1.print()(); // obj1
+	obj1.print().call(obj2); // obj1
+	obj1.print.call(obj2)(); // obj2
+```
+
+### 立即执行函数的函数名相当于常量定义 即const定义。
+```ts
+;(function b() {
+  b = 123
+  console.log(b)
+})()
+// b函数
+```
+- 立即执行函数的函数名相当于常量定义 即const定义。
+- 若进行赋值 所以非严格模式下 会无法给它赋值， 严格模式下会报错
+###  this指向
+```ts
+let length = 10
+function fn() {
+  console.log(this.length);
+}
+let obj = {
+  length: 5,
+  method(fn) {
+    // 两次调用各输出什么
+    fn()
+    arguments[0](0)
+  }
+}
+obj.method(fn, 1)
+```
+- 第一次输出 0，因为 this 指向全局上下文，即为 window, 
+- 而 let length 不会去改window，window.length 代表当前 iframe 数量，默认为 0
+- 第二次输出 2，因为 this 指的是 arguments 参数对象，
+- 而 .method(fn, 1)，故 arguments.length 为形参的数量 2

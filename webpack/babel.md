@@ -100,3 +100,18 @@ module.exports = {
 - 用 babel-generator 通过 AST 树生成 ES5 代码
 ### 以es6转成es5为例：
 - ES6代码输入 ==》 babylon进行解析 ==》 得到AST ==》 plugin用babel-traverse对AST树进行遍历转译 ==》 得到新的AST树 ==》 用babel-generator通过AST树生成ES5代码
+
+
+### babel-runtime和babel-polyfill的区别
+- babel只转语法，具体到api则要靠polyfill来打补丁实现
+- polyfill：会污染全局
+- runtime：不会
+- 第三方lib的话一般用runtime
+
+### 为什么proxy不能被polyfill
+- proxy无法用Object.defienProperty模拟
+
+
+
+
+
