@@ -33,7 +33,6 @@ class MyPromise {
 					cb(val);
 				});
 			})
-			
 		}
 		const reject = (reason) => {
 			if (this.promiseStatus !== PENDING) { return };
@@ -187,3 +186,6 @@ console.log("===END===")
 MyPromise.all([p4, 13]).then(res => {
     console.log(res)
 })
+
+
+

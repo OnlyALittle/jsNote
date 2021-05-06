@@ -38,18 +38,28 @@
 - Accept-encoding：编码
 - Cookie
 - User-agent：向服务器发送浏览器的版本、系统、应用程序的信息。
+- Cache-Control：响应请求都带，在请求头上带，表示本次请求xxx。
 
 ### Response
 - Content-encoding：压缩类型
 - Content-type：媒体资源类型
 - Date：设置响应被服务器创建的时间
-- Cache-control：控制强缓存
 - Expires：设置响应体的过期时间。
+- Cache-control：控制强缓存，响应头上带，表示客户端不要xxx
 - Etag：资源hash值
 - Last-modified：设置该文件在服务器端中最后被修改的时间
 - Set-cookie: 设置 http 的 Cookie
 - Status: 200
 - Access-Control-Allow-Origin: cors
+
+
+### 一个图片 url 访问后直接下载怎样实现?
+```js
+x-oss-object-type: Normal
+x-oss-request-id: 598D5ED34F29D01FE2925F41
+x-oss-storage-class: Standard
+
+```
 
 # HTTP2.0
 ## 二进制传输
@@ -83,7 +93,6 @@
 ### 数据传输阶段（对称加密）
 - 证书验证完成，Client本地生成一个随机数，用公钥加密后，传给Server
 - Server解密得到随机数，根据这个随机数构造对称加密算法，对内容加密
-
 
 ### 数字签名的制作过程：
 - CA拥有非对称加密的私钥和公钥。
@@ -138,9 +147,17 @@
 #### 队首阻塞问题
 - HTTP/1.1 和 HTTP/2 都存在队头阻塞问题(Head of line blocking)
 - HTTP/1.1 的队头阻塞。
-  - 一个 TCP 连接同时传输 10 个请求，其中第 1、2、3 个请求已被客户端接收，但第 4 个请求丢失，那么后面第 5 - 10 个请求都被阻塞，需要等第 4 个请求处理完毕才能被处理，这样 就浪费了带宽资源。
+  - 一个 TCP 连接管道同时传输 10 个请求，其中第 1、2、3 个请求已被客户端接收，但第 4 个请求丢失，那么后面第 5 - 10 个请求都被阻塞，需要等第 4 个请求处理完毕才能被处理，这样 就浪费了带宽资源。
 - HTTP/2 的多路复用虽然可以解决“请求”这个粒度的阻塞，但 HTTP/2 的基础 TCP 协议、TLS 协议本身却也存在着队头阻塞的问题。
 - 队头阻塞会导致 HTTP/2 在更容易丢包的弱网络环境下比 HTTP/1.1 更慢。
 - 那 QUIC 解决队头阻塞问题的的方法:
   1. QUIC 的传输单元是 Packet，加密单元也是 Packet，整个加密、 传输、解密都基于 Packet，这样就能避免 TLS 的队头阻塞问题;
   2. QUIC 基于 UDP，UDP 的数据包在接收端没有处理顺序，即使中间 丢失一个包，也不会阻塞整条连接，其他的资源会被正常处理。
+
+
+## Cookie
+### Cookie 技术通过在请求和响应报文中写入 Cookie 信息来控制客户端的状态。
+- Cookie 会根据从服务器端发送的响应报文内的一个叫做 Set-Cookie 的首部字段信息，通知客户端保存 Cookie。
+- 当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入 Cookie 值后发送出去。
+- 服务器端发现客户端发送过来的 Cookie 后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。
+

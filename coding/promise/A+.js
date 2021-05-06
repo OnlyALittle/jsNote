@@ -172,14 +172,6 @@ class MyPromise {
 }
 
 
-
-
-
-
-
-
-
-
 console.log("===START===")
 const p4 = new MyPromise(resolve => {
     console.log('promise init');

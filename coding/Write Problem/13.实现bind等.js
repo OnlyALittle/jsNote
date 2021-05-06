@@ -26,7 +26,6 @@ Function.prototype.myCall = function (ctx, ...params) {
 }
 
 // apply
-
 Function.prototype.myApply = function (ctx, params) {
 	let _ctx = ctx || globalThis;
 	let temp = Symbol();

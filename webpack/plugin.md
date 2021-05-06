@@ -1,7 +1,7 @@
 # plugin
 ## 写法
 ```js
-class BasicPlugin{
+class BasicPlugin {
   // 在构造函数中获取用户给该插件传入的配置
   constructor(options){
   }
@@ -48,3 +48,4 @@ module.exports = BasicPlugin;
 
 ### 修改输出资源
 - emit广播，`compilation.assets`
+
