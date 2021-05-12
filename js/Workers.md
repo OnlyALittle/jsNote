@@ -28,8 +28,6 @@
 - Worker 与其主页面之间的通信是通过 onmessage 事件和 postMessage() 方法实现的。
 - 数据传输使用的是数据拷贝的方式，如果要转移数据控制权，可以使用buffer
 
-
-
 ### 引入脚本
 - importScripts()
   - 该函数接受0个或者多个URI作为参数。
@@ -106,8 +104,6 @@ self.addEventListener('message', function (e) {
 - 支持推送
 - 它设计为完全异步，同步API（如XHR和localStorage）不能在service worker中使用
 - 出于安全考量，Service workers只能由HTTPS承载
-
-
 
 
 ## 离线缓存

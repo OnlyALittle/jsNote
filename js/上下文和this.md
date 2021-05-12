@@ -67,7 +67,7 @@ let a = {
 ```
 - 立即执行函数的函数名相当于常量定义 即const定义。
 - 若进行赋值 所以非严格模式下 会无法给它赋值， 严格模式下会报错
-###  this指向
+### this指向
 ```ts
 let length = 10
 function fn() {
@@ -87,3 +87,6 @@ obj.method(fn, 1)
 - 而 let length 不会去改window，window.length 代表当前 iframe 数量，默认为 0
 - 第二次输出 2，因为 this 指的是 arguments 参数对象，
 - 而 .method(fn, 1)，故 arguments.length 为形参的数量 2
+
+
+.call.apply 用法

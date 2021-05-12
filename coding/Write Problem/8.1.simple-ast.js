@@ -270,12 +270,8 @@ function transformer(ast) {
 
   ast._context = newAst.body;
 
-  // We'll start by calling the traverser function with our ast and a visitor.
   traverser(ast, {
-
-    // The first visitor method accepts any `NumberLiteral`
     NumberLiteral: {
-      // We'll visit them on enter.
       enter(node, parent) {
         parent._context.push({
           type: 'NumberLiteral',
@@ -284,7 +280,6 @@ function transformer(ast) {
       },
     },
 
-    // Next we have `StringLiteral`
     StringLiteral: {
       enter(node, parent) {
         parent._context.push({
@@ -294,12 +289,8 @@ function transformer(ast) {
       },
     },
 
-    // Next up, `CallExpression`.
     CallExpression: {
       enter(node, parent) {
-
-        // We start creating a new node `CallExpression` with a nested
-        // `Identifier`.
         let expression = {
           type: 'CallExpression',
           callee: {

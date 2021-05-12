@@ -16,7 +16,7 @@
 // ];
 // console.log(dedup(data, (item) => `${item.id}|${item.id1}`))
 
-const dedup = (data, getValue = () => {} ) => {
+const dedup = (data, getValue = () => {}) => {
 	let obj = []
 	let keys = getValue();
 	return data.filter(item => {
