@@ -189,3 +189,13 @@ const RouterLinkImpl = defineComponent({
     },
 });
 ```
+
+## 路由监听原理
+### hash 模式
+- 监听`hashchange`
+- window.addEventListener('hashchange', matchAndUpdate)
+### history 模式
+- H5 API 监听`popstate`
+- 对路由栈的操作`pushState`、`replaceState`
+- window.addEventListener('popstate', matchAndUpdate)
+

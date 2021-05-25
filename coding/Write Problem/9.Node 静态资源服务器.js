@@ -37,6 +37,8 @@ const root = path.resolve(__dirname, '../../');
 
 function setHeader(res, code, type) {
 	res.statusCode = code;
+	// 资源直接进行下载
+	// res.setHeader('Content-Type', 'application/octet-stream');
 	res.setHeader('Content-Type', `${type};charset=utf-8`);
 }
 

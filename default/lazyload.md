@@ -12,13 +12,10 @@
 var io = new IntersectionObserver(callback, option);
 // 开始观察
 io.observe(document.getElementById('example'));
-
 // 停止观察
 io.unobserve(element);
-
 // 关闭观察器
 io.disconnect();
-
 ```
 
 ## 图片懒加载

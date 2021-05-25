@@ -6,7 +6,7 @@
 
 ```html
 <!-- 假设网站中有一个通过 Get 请求提交用户评论的接口，那么攻击者就可以在钓鱼网站中加入一个图片，图片的地址就是评论接口 -->
-<img src="http://www.domain.com/xxx?comment='attack'" />
+<img src="http://www.domain.com/xxx?comment=attack" />
 <!-- post -->
 <form action="http://www.domain.com/xxx" id="CSRF" method="post">
   <input name="comment" value="attack" type="hidden" />

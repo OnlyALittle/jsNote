@@ -71,6 +71,13 @@
 - flex-basis 类似于min-width
 - flex-grow 放大。 相对于同一行上所有其他Flex项目的大小的总和进行缩放。该值将根据指定的值自动调整
 - flex-shrink 收缩，其收缩的大小是依据 flex-shrink 的值。
+- flex
+  - flex: 1; ---> 1 1 0%
+  - flex: 0% / 1px; ---> 1 1 (0% / 1px)
+  - flex: 2 3; ---> 2 3 0%
+  - flex: 2333 3222px; ---> 2333 1 3222px
+  - flex: auto; ---> 1 1 auto
+  - flex: none; ---> 0 0 auto
 
 # transtion 和 animation的区别
 不同点：

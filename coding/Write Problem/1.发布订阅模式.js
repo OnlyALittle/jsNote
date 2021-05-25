@@ -80,10 +80,10 @@ class Observer {
 
 }
 
-  var sub = new Subject();
-  var obs1 = new Observer('ttsy1');
-  var obs2 = new Observer('ttsy2');
-  sub.add(obs1);
-  sub.add(obs2);
-  sub.notify();  //my name is ttsy1、my name is ttsy2
+var sub = new Subject();
+var obs1 = new Observer('ttsy1');
+var obs2 = new Observer('ttsy2');
+sub.add(obs1);
+sub.add(obs2);
+sub.notify();  //my name is ttsy1、my name is ttsy2
 

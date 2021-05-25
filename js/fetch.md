@@ -18,7 +18,8 @@ fetch(url).then(response => response.json())
   - fetch是promise的
   - fetch不管请求处理成功与否，都会触发resolve；
   - fetch只有在当网络故障导致发送失败或者跨域时才会catch
-
+  - 需要response.json()格式化，
+  - cookie，credentials： （include、same-origin、omit）
 
 ## 问题
 1. fetch 发送 2 次请求的原因
