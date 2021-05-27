@@ -13,6 +13,7 @@
 ## 微队列
 - process.nextTick (Node独有)
 - Promise
+- Mutation Observer
 
 ## 浏览器
 ### 在浏览器中，可以认为只有一个宏队列和一个微队列，所有的macrotask都会被加到这一个宏队列中，所有的microtask都会被加到这一个微队列中。

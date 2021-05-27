@@ -1,31 +1,35 @@
-async function a(params) {
-    console.log('a')
-    await new Promise(r => {
-        console.log('b')
-        r()
-    }).then(() => {console.log('c')}).then(() => {console.log('d')})
-    // b();
-    console.log('a2')
-}
-// async function b(params) {
-//     console.log('b')
-// }
-a();
 
-new Promise(r => {
-    console.log('p')
-    r()
-}).then(() => {
-    console.log('p1')
-}).then(() => {
-    console.log('p1')
-}).then(() => {
-    console.log('p1')
-}).then(() => {
-    console.log('p1')
-}).then(() => {
-    console.log('p1')
-}).then(() => {
-    console.log('p1')
+setTimeout(() => {
+    console.log(1)
+    let date = Date.now();
+    while (1) {
+        if (Date.now() - date > 50) break;
+    }
+    console.log('-----');
+    setTimeout(() => {
+        console.log(2)
+    })
+
 })
 
+let date = Date.now();
+while (1) {
+    if (Date.now() - date > 50) break;
+}
+
+setImmediate(() => {
+    console.log(3)
+})
+
+// setTimeout(() => {
+//     setTimeout(() => {
+//         console.log(3)
+//     })
+//     let date = Date.now();
+//     while (1) {
+//         if (Date.now() - date > 50) break;
+//     }
+//     setImmediate(() => {
+//         console.log(4)
+//     })
+// })
