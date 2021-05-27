@@ -15,8 +15,6 @@ const mock = (name) => new Promise((resolve, reject) => {
 			reject(name);
 		}
 	}, 1000 * Math.random())
-}).catch((res) => {
-	errors.push(mock(res));
 })
 
 let t1 = mock('t1')
@@ -27,15 +25,6 @@ let t5 = mock('t5')
 
 
 const all = (arr) => {
-	Promise.all(arr).then(res => {
-		if(errors.length) {
-			console.log(`开始重试`)
-			all(errors);
-			errors = []
-		}
-	}).catch((res) => {
-		console.log('-------')
-	})
 }
 
 all([t1,t2,t3,t4,t5])
